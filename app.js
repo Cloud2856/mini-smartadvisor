@@ -9,11 +9,20 @@ form.addEventListener("submit", function(event) {
     const startTime = document.getElementById("startTime").value;
     const endTime = document.getElementById("endTime").value;
 
-    console.log("Course:", course);
-    console.log("CRN:", crn);
-    console.log("Days:", days);
-    console.log("Start Time:", startTime);
-    console.log("End Time:", endTime);
+    const courseList = document.getElementById("courseList");
 
-    alert("Course added!");
+    const courseItem = document.createElement("div");
+
+    courseItem.innerHTML = `
+        <p>
+            <strong>${course}</strong><br>
+            CRN: ${crn}<br>
+            Days: ${days}<br>
+            Time: ${startTime} - ${endTime}
+        </p>
+    `;
+
+    courseList.appendChild(courseItem);
+
+    form.reset();
 });
