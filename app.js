@@ -110,9 +110,6 @@ form.addEventListener("submit", async function(event) {
     displayCourse(data[0]);
 
     form.reset();
-});
-
-loadCourses();
 
     form.reset();
 });
