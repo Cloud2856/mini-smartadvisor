@@ -2,6 +2,7 @@ const supabaseUrl = "https://zdotifrlhcuempmbzppx.supabase.co";
 const supabaseKey = "sb_publishable_oNL-OUsQQTSe0BIUq3c8Cg_v1nPjvNz";
 
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
 const form = document.querySelector("form");
 const courseList = document.getElementById("courseList");
 
@@ -33,9 +34,49 @@ function displayCourse(course) {
             Days: ${course.days}<br>
             Time: ${course.start_time} - ${course.end_time}
         </p>
+
+        <button onclick="editCourse(${course.id})">Edit</button>
+        <button onclick="deleteCourse(${course.id})">Delete</button>
+        <hr>
     `;
 
     courseList.appendChild(courseItem);
+}
+
+async function deleteCourse(id) {
+    const { error } = await supabaseClient
+        .from("Courses")
+        .delete()
+        .eq("id", id);
+
+    if (error) {
+        console.error("Error deleting course:", error);
+        alert("There was an error deleting the course.");
+        return;
+    }
+
+    loadCourses();
+}
+
+async function editCourse(id) {
+    const newCourse = prompt("Enter the new course name:");
+
+    if (!newCourse) {
+        return;
+    }
+
+    const { error } = await supabaseClient
+        .from("Courses")
+        .update({ course: newCourse })
+        .eq("id", id);
+
+    if (error) {
+        console.error("Error updating course:", error);
+        alert("There was an error updating the course.");
+        return;
+    }
+
+    loadCourses();
 }
 
 form.addEventListener("submit", async function(event) {
@@ -67,6 +108,11 @@ form.addEventListener("submit", async function(event) {
     }
 
     displayCourse(data[0]);
+
+    form.reset();
+});
+
+loadCourses();
 
     form.reset();
 });
