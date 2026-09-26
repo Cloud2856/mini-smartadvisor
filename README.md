@@ -12,6 +12,26 @@ The application allows students to add and manage course information, including:
 
 Courses are stored in a Supabase database so they remain available after the page is refreshed.
 
+## Short Spec
+
+Mini SmartAdvisor is a simple course scheduling application that allows students to add, view, edit, and delete course information. The application uses Supabase to store course data and provides a simple web interface for managing saved courses.
+
+Main data used by the application:
+
+- Course name
+- CRN
+- Meeting days
+- Start time
+- End time
+
+Pages:
+
+- Main course management page
+
+Login:
+
+- User authentication is not required for this simplified prototype.
+
 ## Features
 
 - Add courses
