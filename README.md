@@ -85,3 +85,7 @@ https://mini-smartadvisor.netlify.app
 ## Project Purpose
 
 This project was created as practice for using AI tools to build software and as a simplified prototype related to the SmartAdvisor Engineering Design project.
+
+##Demo Video
+Youtube Demo
+https://youtu.be/HUZKG2qAXig
